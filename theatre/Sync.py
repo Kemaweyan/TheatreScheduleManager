@@ -214,6 +214,9 @@ class Parser:
                     #title = links.get_element(0).get_attr('title')
                     links = paragraphs[2].a
                     title = str(links[0])
+                    # if the link text is empty
+                    if not title:
+                        raise Exception
                 except:
                     # if structure differs then an error has occured
                     # in this case use seventh <span> object as a title

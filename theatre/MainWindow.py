@@ -253,15 +253,20 @@ class SheduleTableView(QtWidgets.QTableView):
         Sets selected event and row number.
 
         """
-        cells = selected.indexes() # get selected cells
-        # read data from selected cells
-        date = cells[0].data(QtCore.Qt.UserRole + 1)
-        title = cells[2].data()
-        hashsum = cells[2].data(QtCore.Qt.UserRole + 1)
-        people = cells[3].data()
-        # create an event object
-        self.selected_event = Event(date, title, people, hashsum)
-        self.selected_row = cells[0].row() # get selected row number
+        cells = selected.indexes()  # get selected cells
+        try:
+            # read data from selected cells
+            date = cells[0].data(QtCore.Qt.UserRole + 1)
+            title = cells[2].data()
+            hashsum = cells[2].data(QtCore.Qt.UserRole + 1)
+            people = cells[3].data()
+            # create an event object
+            self.selected_event = Event(date, title, people, hashsum)
+            self.selected_row = cells[0].row()  # get selected row number
+        except IndexError:
+            # there are no remaining events
+            self.selected_event = None
+            self.selected_row = None
 
     def mousePressEvent(self, event):
 
@@ -300,7 +305,7 @@ class MainWindow(QtWidgets.QMainWindow):
         QtWidgets.QMainWindow.__init__(self, parent)
 
         self.resize(600, 500)
-        self.setWindowTitle("Theatre Shedule Manager")
+        self.setWindowTitle("Theatre shedule application 2.0")
         self.setWindowIcon(QtGui.QIcon(ICON_DEFAULT))
         self.statusBar() # create statusbar
 

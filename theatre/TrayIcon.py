@@ -47,8 +47,8 @@ class TrayIcon(QtWidgets.QSystemTrayIcon):
     System tray icon object.
 
     """
-    tooltip_text = 'Theatre Shedule Manager'
-    tooltip_text_new = 'Theatre Shedule Manager - new events'
+    tooltip_text = 'Theatre shedule'
+    tooltip_text_new = 'Theatre shedule - new events'
 
     def __init__(self, shedule, parent=None):
         QtWidgets.QWidget.__init__(self, QtGui.QIcon(ICON_DEFAULT), parent)
@@ -219,10 +219,10 @@ class TrayIcon(QtWidgets.QSystemTrayIcon):
                 self.has_new = True
 
         if self.has_new: # there are new events
-            message = '<b>Shedule has been successfully updated</b><br><br>'
+            message = '<b>Shedule has been successfully updated</b><br>'
             for key, changes in all_changes.items():
                 month_num = int(key[-1:]) if key[4] == '0' else int(key[-2:])
-                message += '{} {}<br>'.format(calendar.month_name[month_num], key[:4])
+                message += '<br>{} {}<br>'.format(calendar.month_name[month_num], key[:4])
                 message += '<br>'.join(changes) 
         elif self.thread.events: # there are old events only
             message = 'Shedule is up to date'
