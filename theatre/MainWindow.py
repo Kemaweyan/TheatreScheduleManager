@@ -305,7 +305,7 @@ class MainWindow(QtWidgets.QMainWindow):
         QtWidgets.QMainWindow.__init__(self, parent)
 
         self.resize(600, 500)
-        self.setWindowTitle("Theatre shedule application 2.0")
+        self.setWindowTitle("Theatre Shedule Manager")
         self.setWindowIcon(QtGui.QIcon(ICON_DEFAULT))
         self.statusBar() # create statusbar
 

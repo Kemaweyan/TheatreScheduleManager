@@ -47,8 +47,8 @@ class TrayIcon(QtWidgets.QSystemTrayIcon):
     System tray icon object.
 
     """
-    tooltip_text = 'Theatre shedule'
-    tooltip_text_new = 'Theatre shedule - new events'
+    tooltip_text = 'Shedule Manager'
+    tooltip_text_new = 'Shedule Manager - new events'
 
     def __init__(self, shedule, parent=None):
         QtWidgets.QWidget.__init__(self, QtGui.QIcon(ICON_DEFAULT), parent)
